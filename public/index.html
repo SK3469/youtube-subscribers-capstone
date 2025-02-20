@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribers Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Subscribers List</h1>
+    <button onclick="fetchSubscribers()">Fetch Subscribers</button>
+    <table id="subscribersTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Channel</th>
+                <th>Subscribed Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        async function fetchSubscribers() {
+            try {
+                const response = await fetch("/subscribers");
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                const data = await response.json(); //response from data.json
+                const tableBody = document.querySelector("#subscribersTable tbody");
+                tableBody.innerHTML = ""; // Clear previous data
+
+                data.forEach(subscriber => {
+                    const row = `<tr>
+                        <td>${subscriber._id}</td>
+                        <td>${subscriber.name}</td>
+                        <td>${subscriber.subscribedChannel}</td>
+                        <td>${new Date(subscriber.subscribedDate).toLocaleDateString()}</td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            } catch (error) {
+                console.error("Error fetching subscribers:", error);
+                alert("Failed to fetch subscribers.");
+            }
+        }
+    </script>
+</body>
+</html>
