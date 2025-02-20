@@ -1,276 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscriber - API Documentation</title>
+    <title>Subscribers Data</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
             padding: 20px;
         }
-
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            text-align: center;
-            animation: fadeInDown 1s ease-in-out;
-        }
-
-        h2 {
-            color: #34495e;
-            margin-bottom: 10px;
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
             cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
             padding: 10px;
-            background-color: #ecf0f1;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            border: 1px solid #ddd;
+            text-align: left;
         }
-
-        h2:hover {
-            background-color: #bdc3c7;
-        }
-
-        code {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        pre {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-
-        .endpoint-content {
-            display: none;
-            margin-top: 10px;
-            padding: 15px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .endpoint-content.show {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media screen and (max-width: 600px) {
-            h1 {
-                font-size: 24px;
-            }
-
-            h2 {
-                font-size: 18px;
-            }
+        th {
+            background-color: #007bff;
+            color: white;
         }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>API Documentation</h1>
-
-        <!-- Endpoint 1: GET /subscribers -->
-        <div class="endpoint">
-            <h2 onclick="toggleEndpointContent(1)">GET /subscribers</h2>
-            <div class="endpoint-content" id="endpoint-content-1">
-                <p>The API endpoint URL for this service is:</p>
-                <pre><code>/subscribers</code></pre>
-
-                <h3>Request</h3>
-                <p>To make a request to the API, send a <code>GET</code> request to the endpoint.</p>
-
-                <h3>Response</h3>
-                <p>The API will respond with an array of JSON objects containing the following fields:</p>
-                <ul>
-                    <li><code>_id</code>: Unique id of Subscriber.</li>
-                    <li><code>name</code>: Name of Subscriber.</li>
-                    <li><code>subscribedChannel</code>: Name of channel.</li>
-                    <li><code>subscribedDate</code>: Date of Subscription.</li>
-                </ul>
-
-                <h3>Example Request</h3>
-                <pre><code>
-                GET /subscribers HTTP/1.1
-                Content-Type: application/json
-                </code></pre>
-
-                <h3>Example Response</h3>
-                <pre><code id="response-1"></code></pre>
-            </div>
-        </div>
-
-        <!-- Endpoint 2: GET /subscribers/name -->
-        <div class="endpoint">
-            <h2 onclick="toggleEndpointContent(2)">GET /subscribers/name</h2>
-            <div class="endpoint-content" id="endpoint-content-2">
-                <p>The API endpoint URL for this service is:</p>
-                <pre><code>/subscribers/name</code></pre>
-
-                <h3>Request</h3>
-                <p>To make a request to the API, send a <code>GET</code> request to the endpoint.</p>
-
-                <h3>Response</h3>
-                <p>The API will respond with an array of JSON objects containing the following fields:</p>
-                <ul>
-                    <li><code>name</code>: Name of Subscriber.</li>
-                    <li><code>subscribedChannel</code>: Name of channel.</li>
-                </ul>
-
-                <h3>Example Request</h3>
-                <pre><code>
-                GET /subscribers/name HTTP/1.1
-                Content-Type: application/json
-                </code></pre>
-
-                <h3>Example Response</h3>
-                <pre><code id="response-2"></code></pre>
-            </div>
-        </div>
-
-        <!-- Endpoint 3: GET /subscribers/{id} -->
-        <div class="endpoint">
-            <h2 onclick="toggleEndpointContent(3)">GET /subscribers/{id}</h2>
-            <div class="endpoint-content" id="endpoint-content-3">
-                <p>The API endpoint URL for this service is:</p>
-                <pre><code>/subscribers/{id}</code></pre>
-
-                <h3>Request</h3>
-                <p>To make a request to the API, send a <code>GET</code> request to the endpoint.</p>
-
-                <h3>Response</h3>
-                <p>The API will respond with an array of JSON objects containing the following fields:</p>
-                <ul>
-                    <li><code>_id</code>: Unique id of Subscriber.</li>
-                    <li><code>name</code>: Name of Subscriber.</li>
-                    <li><code>subscribedChannel</code>: Name of channel.</li>
-                    <li><code>subscribedDate</code>: Date of Subscription.</li>
-                </ul>
-
-                <h3>Example Request</h3>
-                <pre><code>
-                GET /subscribers/{id} HTTP/1.1
-                Content-Type: application/json
-                </code></pre>
-
-                <h3>Example Response</h3>
-                <pre><code id="response-3"></code></pre>
-            </div>
-        </div>
-    </div>
+    <h1>Subscribers List</h1>
+    <button onclick="fetchSubscribers()">Fetch Subscribers</button>
+    <table id="subscribersTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Channel</th>
+                <th>Subscribed Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here -->
+        </tbody>
+    </table>
 
     <script>
-        // JSON data for example responses
-        const subscribersData = [
-            {
-                "_id": "67b699b218e5892f186e64a2",
-                "name": "Alice",
-                "subscribedChannel": "Cooking Channel",
-                "subscribedDate": "2025-03-10T10:30:00.000Z"
-            },
-            {
-                "_id": "67b69a0818e5892f186e64a3",
-                "name": "Sunil Kumar",
-                "subscribedChannel": "Tech Channel",
-                "subscribedDate": "2025-02-20T08:40:00.000Z"
-            },
-            {
-                "_id": "67b69a4a18e5892f186e64a4",
-                "name": "Elon Musk",
-                "subscribedChannel": "Space-X Channel",
-                "subscribedDate": "2025-02-19T09:40:00.000Z"
-            },
-            {
-                "_id": "67b69b3e18e5892f186e64a7",
-                "name": "PM Modi",
-                "subscribedChannel": "Poltical Channel",
-                "subscribedDate": "2025-02-20T06:40:00.000Z"
+        async function fetchSubscribers() {
+            try {
+                const response = await fetch("/subscribers");
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                const data = await response.json(); //response from data.json
+                const tableBody = document.querySelector("#subscribersTable tbody");
+                tableBody.innerHTML = ""; // Clear previous data
+
+                data.forEach(subscriber => {
+                    const row = `<tr>
+                        <td>${subscriber._id}</td>
+                        <td>${subscriber.name}</td>
+                        <td>${subscriber.subscribedChannel}</td>
+                        <td>${new Date(subscriber.subscribedDate).toLocaleDateString()}</td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            } catch (error) {
+                console.error("Error fetching subscribers:", error);
+                alert("Failed to fetch subscribers.");
             }
-        ];
-
-        const subscribersNameData = [
-            {
-                "name": "Alice",
-                "subscribedChannel": "Cooking Channel"
-            },
-            {
-                "name": "Sunil Kumar",
-                "subscribedChannel": "Tech Channel"
-            },
-            {
-                "name": "Elon Musk",
-                "subscribedChannel": "Space-X Channel"
-            },
-            {
-                "name": "PM Modi",
-                "subscribedChannel": "Poltical Channel"
-            }
-        ];
-
-        const subscriberByIdData = {
-            "_id": "67b699b218e5892f186e64a2",
-            "name": "Alice",
-            "subscribedChannel": "Cooking Channel",
-            "subscribedDate": "2025-03-10T10:30:00.000Z"
-        }
-
-        // Populate example responses
-        document.getElementById('response-1').textContent = JSON.stringify(subscribersData, null, 2);
-        document.getElementById('response-2').textContent = JSON.stringify(subscribersNameData, null, 2);
-        document.getElementById('response-3').textContent = JSON.stringify(subscriberByIdData, null, 2);
-
-        // Toggle endpoint content
-        function toggleEndpointContent(endpointId) {
-            const content = document.getElementById(`endpoint-content-${endpointId}`);
-            content.classList.toggle('show');
         }
     </script>
 </body>
-
 </html>
